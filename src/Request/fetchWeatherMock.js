@@ -1,0 +1,696 @@
+export default function fetchWeatherMock(country) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve({
+          city: {
+            id: 5128581,
+            name: country,
+            coord: { lat: 40.7143, lon: -74.006 },
+            country: 'US',
+            population: 8175133,
+            timezone: -14400,
+            sunrise: 1686000000,
+            sunset: 1686052800,
+          },
+          cod: "200",
+          message: 0,
+          cnt: 40,
+          list: [
+            {
+              dt: 1749330000,
+              main: {
+                temp: 22.3,
+                feels_like: 21.8,
+                temp_min: 21.5,
+                temp_max: 23.1,
+                pressure: 1015,
+                sea_level: 1015,
+                grnd_level: 1014,
+                humidity: 65,
+                temp_kf: 0.5,
+              },
+              weather: [
+                {
+                  id: 800,
+                  main: "Clear",
+                  description: "clear sky",
+                  icon: "01d",
+                }
+              ],
+              clouds: { all: 0 },
+              wind: {
+                speed: 3.5,
+                deg: 210,
+                gust: 5.2,
+              },
+              visibility: 10000,
+              pop: 0.1,
+              sys: { pod: "d" },
+              dt_txt: "2025-06-05 12:00",
+            },
+            {
+              dt: 1749340800,
+              main: {
+                temp: 24,
+                feels_like: 21.8,
+                temp_min: 23.5,
+                temp_max: 24.1,
+                pressure: 1015,
+                sea_level: 1015,
+                grnd_level: 1014,
+                humidity: 65,
+                temp_kf: 0.5,
+              },
+              weather: [
+                {
+                  id: 800,
+                  main: "Clear",
+                  description: "clear sky",
+                  icon: "01d",
+                }
+              ],
+              clouds: { all: 0 },
+              wind: {
+                speed: 3.5,
+                deg: 210,
+                gust: 5.2,
+              },
+              visibility: 10000,
+              pop: 0.1,
+              sys: { pod: "d" },
+              dt_txt: "2025-06-05 15:00",
+            },
+            {
+              dt: 1749351600,
+              main: {
+                temp: 24,
+                feels_like: 21.8,
+                temp_min: 23.5,
+                temp_max: 24.1,
+                pressure: 1015,
+                sea_level: 1015,
+                grnd_level: 1014,
+                humidity: 65,
+                temp_kf: 0.5,
+              },
+              weather: [
+                {
+                  id: 800,
+                  main: "Clear",
+                  description: "clear sky",
+                  icon: "01d",
+                }
+              ],
+              clouds: { all: 0 },
+              wind: {
+                speed: 3.5,
+                deg: 210,
+                gust: 5.2,
+              },
+              visibility: 10000,
+              pop: 0.1,
+              sys: { pod: "d" },
+              dt_txt: "2025-06-05 16:00",
+            },
+            {
+              dt: 1749362400,
+              main: {
+                temp: 22.3,
+                feels_like: 21.8,
+                temp_min: 21.5,
+                temp_max: 23.1,
+                pressure: 1015,
+                sea_level: 1015,
+                grnd_level: 1014,
+                humidity: 65,
+                temp_kf: 0.5,
+              },
+              weather: [
+                {
+                  id: 800,
+                  main: "Clear",
+                  description: "clear sky",
+                  icon: "01d",
+                }
+              ],
+              clouds: { all: 0 },
+              wind: {
+                speed: 3.5,
+                deg: 210,
+                gust: 5.2,
+              },
+              visibility: 10000,
+              pop: 0.1,
+              sys: { pod: "d" },
+              dt_txt: "2025-06-06 12:00",
+            },
+            {
+              dt: 1749373200,
+              main: {
+                temp: 24,
+                feels_like: 21.8,
+                temp_min: 23.5,
+                temp_max: 24.1,
+                pressure: 1015,
+                sea_level: 1015,
+                grnd_level: 1014,
+                humidity: 65,
+                temp_kf: 0.5,
+              },
+              weather: [
+                {
+                  id: 800,
+                  main: "Clear",
+                  description: "clear sky",
+                  icon: "01d",
+                }
+              ],
+              clouds: { all: 0 },
+              wind: {
+                speed: 3.5,
+                deg: 210,
+                gust: 5.2,
+              },
+              visibility: 10000,
+              pop: 0.1,
+              sys: { pod: "d" },
+              dt_txt: "2025-06-06 15:00",
+            },
+            {
+              dt: 1749384000,
+              main: {
+                temp: 24,
+                feels_like: 21.8,
+                temp_min: 23.5,
+                temp_max: 24.1,
+                pressure: 1015,
+                sea_level: 1015,
+                grnd_level: 1014,
+                humidity: 65,
+                temp_kf: 0.5,
+              },
+              weather: [
+                {
+                  id: 800,
+                  main: "Clear",
+                  description: "clear sky",
+                  icon: "01d",
+                }
+              ],
+              clouds: { all: 0 },
+              wind: {
+                speed: 3.5,
+                deg: 210,
+                gust: 5.2,
+              },
+              visibility: 10000,
+              pop: 0.1,
+              sys: { pod: "d" },
+              dt_txt: "2025-06-06 16:00",
+            },
+            {
+              dt: 1749124800,
+              main: {
+                temp: 22.3,
+                feels_like: 21.8,
+                temp_min: 21.5,
+                temp_max: 23.1,
+                pressure: 1015,
+                sea_level: 1015,
+                grnd_level: 1014,
+                humidity: 65,
+                temp_kf: 0.5,
+              },
+              weather: [
+                {
+                  id: 800,
+                  main: "Clear",
+                  description: "clear sky",
+                  icon: "01d",
+                }
+              ],
+              clouds: { all: 0 },
+              wind: {
+                speed: 3.5,
+                deg: 210,
+                gust: 5.2,
+              },
+              visibility: 10000,
+              pop: 0.1,
+              sys: { pod: "d" },
+              dt_txt: "2025-06-07 12:00:00",
+            },
+            {
+              dt: 1749394800,
+              main: {
+                temp: 24,
+                feels_like: 21.8,
+                temp_min: 23.5,
+                temp_max: 24.1,
+                pressure: 1015,
+                sea_level: 1015,
+                grnd_level: 1014,
+                humidity: 65,
+                temp_kf: 0.5,
+              },
+              weather: [
+                {
+                  id: 800,
+                  main: "Clear",
+                  description: "clear sky",
+                  icon: "01d",
+                }
+              ],
+              clouds: { all: 0 },
+              wind: {
+                speed: 3.5,
+                deg: 210,
+                gust: 5.2,
+              },
+              visibility: 10000,
+              pop: 0.1,
+              sys: { pod: "d" },
+              dt_txt: "2025-06-07 15:00",
+            },
+            {
+              dt: 1749405600,
+              main: {
+                temp: 24,
+                feels_like: 21.8,
+                temp_min: 23.5,
+                temp_max: 24.1,
+                pressure: 1015,
+                sea_level: 1015,
+                grnd_level: 1014,
+                humidity: 65,
+                temp_kf: 0.5,
+              },
+              weather: [
+                {
+                  id: 800,
+                  main: "Clear",
+                  description: "clear sky",
+                  icon: "01d",
+                }
+              ],
+              clouds: { all: 0 },
+              wind: {
+                speed: 3.5,
+                deg: 210,
+                gust: 5.2,
+              },
+              visibility: 10000,
+              pop: 0.1,
+              sys: { pod: "d" },
+              dt_txt: "2025-06-07 16:00",
+            },
+            {
+              dt: 1749416400,
+              main: {
+                temp: 22.3,
+                feels_like: 21.8,
+                temp_min: 21.5,
+                temp_max: 23.1,
+                pressure: 1015,
+                sea_level: 1015,
+                grnd_level: 1014,
+                humidity: 65,
+                temp_kf: 0.5,
+              },
+              weather: [
+                {
+                  id: 800,
+                  main: "Clear",
+                  description: "clear sky",
+                  icon: "01d",
+                }
+              ],
+              clouds: { all: 0 },
+              wind: {
+                speed: 3.5,
+                deg: 210,
+                gust: 5.2,
+              },
+              visibility: 10000,
+              pop: 0.1,
+              sys: { pod: "d" },
+              dt_txt: "2025-06-08 12:00:00",
+            },
+            {
+              dt: 1749124800,
+              main: {
+                temp: 24,
+                feels_like: 21.8,
+                temp_min: 23.5,
+                temp_max: 24.1,
+                pressure: 1015,
+                sea_level: 1015,
+                grnd_level: 1014,
+                humidity: 65,
+                temp_kf: 0.5,
+              },
+              weather: [
+                {
+                  id: 800,
+                  main: "Clear",
+                  description: "clear sky",
+                  icon: "01d",
+                }
+              ],
+              clouds: { all: 0 },
+              wind: {
+                speed: 3.5,
+                deg: 210,
+                gust: 5.2,
+              },
+              visibility: 10000,
+              pop: 0.1,
+              sys: { pod: "d" },
+              dt_txt: "2025-06-08 15:00",
+            },
+            {
+              dt: 1749427200,
+              main: {
+                temp: 24,
+                feels_like: 21.8,
+                temp_min: 23.5,
+                temp_max: 24.1,
+                pressure: 1015,
+                sea_level: 1015,
+                grnd_level: 1014,
+                humidity: 65,
+                temp_kf: 0.5,
+              },
+              weather: [
+                {
+                  id: 800,
+                  main: "Clear",
+                  description: "clear sky",
+                  icon: "01d",
+                }
+              ],
+              clouds: { all: 0 },
+              wind: {
+                speed: 3.5,
+                deg: 210,
+                gust: 5.2,
+              },
+              visibility: 10000,
+              pop: 0.1,
+              sys: { pod: "d" },
+              dt_txt: "2025-06-08 16:00",
+            },
+            {
+              dt: 1749286800,
+              main: {
+                temp: 21.3,
+                feels_like: 21.8,
+                temp_min: 21.5,
+                temp_max: 23.1,
+                pressure: 1015,
+                sea_level: 1015,
+                grnd_level: 1014,
+                humidity: 65,
+                temp_kf: 0.5,
+              },
+              weather: [
+                {
+                  id: 800,
+                  main: "Clear",
+                  description: "clear sky",
+                  icon: "01d",
+                }
+              ],
+              clouds: { all: 0 },
+              wind: {
+                speed: 3.5,
+                deg: 210,
+                gust: 5.2,
+              },
+              visibility: 10000,
+              pop: 0.1,
+              sys: { pod: "d" },
+              dt_txt: "2025-06-09 12:00:00",
+            },
+            {
+              dt: 1749297600,
+              main: {
+                temp: 24,
+                feels_like: 21.8,
+                temp_min: 23.5,
+                temp_max: 24.1,
+                pressure: 1015,
+                sea_level: 1015,
+                grnd_level: 1014,
+                humidity: 65,
+                temp_kf: 0.5,
+              },
+              weather: [
+                {
+                  id: 800,
+                  main: "Clear",
+                  description: "clear sky",
+                  icon: "01d",
+                }
+              ],
+              clouds: { all: 0 },
+              wind: {
+                speed: 3.5,
+                deg: 210,
+                gust: 5.2,
+              },
+              visibility: 10000,
+              pop: 0.1,
+              sys: { pod: "d" },
+              dt_txt: "2025-06-09 15:00",
+            },
+            {
+              dt: 1749308400,
+              main: {
+                temp: 24,
+                feels_like: 21.8,
+                temp_min: 23.5,
+                temp_max: 24.1,
+                pressure: 1015,
+                sea_level: 1015,
+                grnd_level: 1014,
+                humidity: 65,
+                temp_kf: 0.5,
+              },
+              weather: [
+                {
+                  id: 800,
+                  main: "Clear",
+                  description: "clear sky",
+                  icon: "01d",
+                }
+              ],
+              clouds: { all: 0 },
+              wind: {
+                speed: 3.5,
+                deg: 210,
+                gust: 5.2,
+              },
+              visibility: 10000,
+              pop: 0.1,
+              sys: { pod: "d" },
+              dt_txt: "2025-06-09 16:00",
+            },
+            {
+              dt: 1749319200,
+              main: {
+                temp: 21.3,
+                feels_like: 21.8,
+                temp_min: 21.5,
+                temp_max: 23.1,
+                pressure: 1015,
+                sea_level: 1015,
+                grnd_level: 1014,
+                humidity: 65,
+                temp_kf: 0.5,
+              },
+              weather: [
+                {
+                  id: 800,
+                  main: "Clear",
+                  description: "clear sky",
+                  icon: "01d",
+                }
+              ],
+              clouds: { all: 0 },
+              wind: {
+                speed: 3.5,
+                deg: 210,
+                gust: 5.2,
+              },
+              visibility: 10000,
+              pop: 0.1,
+              sys: { pod: "d" },
+              dt_txt: "2025-06-10 12:00:00",
+            },
+            {
+              dt: 1749330000,
+              main: {
+                temp: 24,
+                feels_like: 21.8,
+                temp_min: 23.5,
+                temp_max: 24.1,
+                pressure: 1015,
+                sea_level: 1015,
+                grnd_level: 1014,
+                humidity: 65,
+                temp_kf: 0.5,
+              },
+              weather: [
+                {
+                  id: 800,
+                  main: "Clear",
+                  description: "clear sky",
+                  icon: "01d",
+                }
+              ],
+              clouds: { all: 0 },
+              wind: {
+                speed: 3.5,
+                deg: 210,
+                gust: 5.2,
+              },
+              visibility: 10000,
+              pop: 0.1,
+              sys: { pod: "d" },
+              dt_txt: "2025-06-10 15:00",
+            },
+            {
+              dt: 1749340800,
+              main: {
+                temp: 24,
+                feels_like: 21.8,
+                temp_min: 23.5,
+                temp_max: 24.1,
+                pressure: 1015,
+                sea_level: 1015,
+                grnd_level: 1014,
+                humidity: 65,
+                temp_kf: 0.5,
+              },
+              weather: [
+                {
+                  id: 800,
+                  main: "Clear",
+                  description: "clear sky",
+                  icon: "01d",
+                }
+              ],
+              clouds: { all: 0 },
+              wind: {
+                speed: 3.5,
+                deg: 210,
+                gust: 5.2,
+              },
+              visibility: 10000,
+              pop: 0.1,
+              sys: { pod: "d" },
+              dt_txt: "2025-06-10 16:00",
+            },
+            {
+              dt: 1749351600,
+              main: {
+                temp: 21.3,
+                feels_like: 21.8,
+                temp_min: 21.5,
+                temp_max: 23.1,
+                pressure: 1015,
+                sea_level: 1015,
+                grnd_level: 1014,
+                humidity: 65,
+                temp_kf: 0.5,
+              },
+              weather: [
+                {
+                  id: 800,
+                  main: "Clear",
+                  description: "clear sky",
+                  icon: "01d",
+                }
+              ],
+              clouds: { all: 0 },
+              wind: {
+                speed: 3.5,
+                deg: 210,
+                gust: 5.2,
+              },
+              visibility: 10000,
+              pop: 0.1,
+              sys: { pod: "d" },
+              dt_txt: "2025-06-11 12:00",
+            },
+            {
+              dt: 1749362400,
+              main: {
+                temp: 24,
+                feels_like: 21.8,
+                temp_min: 23.5,
+                temp_max: 24.1,
+                pressure: 1015,
+                sea_level: 1015,
+                grnd_level: 1014,
+                humidity: 65,
+                temp_kf: 0.5,
+              },
+              weather: [
+                {
+                  id: 800,
+                  main: "Clear",
+                  description: "clear sky",
+                  icon: "01d",
+                }
+              ],
+              clouds: { all: 0 },
+              wind: {
+                speed: 3.5,
+                deg: 210,
+                gust: 5.2,
+              },
+              visibility: 10000,
+              pop: 0.1,
+              sys: { pod: "d" },
+              dt_txt: "2025-06-11 15:00",
+            },
+            {
+              dt: 1749373200,
+              main: {
+                temp: 24,
+                feels_like: 21.8,
+                temp_min: 23.5,
+                temp_max: 24.1,
+                pressure: 1015,
+                sea_level: 1015,
+                grnd_level: 1014,
+                humidity: 65,
+                temp_kf: 0.5,
+              },
+              weather: [
+                {
+                  id: 800,
+                  main: "Clear",
+                  description: "clear sky",
+                  icon: "01d",
+                }
+              ],
+              clouds: { all: 0 },
+              wind: {
+                speed: 3.5,
+                deg: 210,
+                gust: 5.2,
+              },
+              visibility: 10000,
+              pop: 0.1,
+              sys: { pod: "d" },
+              dt_txt: "2025-06-11 16:00",
+            },
+          ]
+        });
+      }, 500);
+    });
+  }
+  
