@@ -1,30 +1,41 @@
-import React, { useState } from 'react'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuTrigger } from './ui/dropdown-menu'
-import { Button } from './ui/button'
-import { cities } from '../Request'
+import React, { useState } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+export default function DropDownMenu({ onSelect, options = [] }) {
+  const [selectedCity, setSelectedCity] = useState(options[0] || "London");
 
-export default function DropDownMenu({onSelect}) {
-    const [selectedCity, setSelectedCity] = useState("London")
+  const handleChange = (value) => {
+    setSelectedCity(value);
+    onSelect(value);
+  };
 
-    const handleChange = (value) => {
-      setSelectedCity(value)
-      onSelect(value) 
-    }
-    return (
+  return (
     <DropdownMenu>
     <DropdownMenuTrigger asChild>
-      <button variant="outline">Open</button>
+      <button className="border px-4 py-2 rounded max-w-[250px] w-full">
+        {selectedCity || "Shahar tanlang"}
+      </button>
     </DropdownMenuTrigger>
     <DropdownMenuContent className="w-56">
-      <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
-      <DropdownMenuSeparator />
-      <DropdownMenuRadioGroup value={selectedCity} onValueChange={handleChange}>
-          {cities.map((city) => (
+      {options.length > 0 ? (
+        <DropdownMenuRadioGroup value={selectedCity} onValueChange={handleChange}>
+          {options.map((city) => (
             <DropdownMenuRadioItem key={city} value={city}>
               {city}
             </DropdownMenuRadioItem>
           ))}
         </DropdownMenuRadioGroup>
+      ) : (
+        <p className="p-4 text-center text-gray-500">Shahar topilmadi</p>
+      )}
     </DropdownMenuContent>
-  </DropdownMenu>)
+  </DropdownMenu>
+  );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import WeatherCountry from '../weatherCountry/WeatherCountry'
-import DropDownMenu from '../../components/DropDownMenu'
+import CitySelector from '../../components/CitySelector'
 
 export default function WeatherWidget() {
   const [selectedCity, setSelectedCity] = useState("London")
@@ -8,8 +8,8 @@ export default function WeatherWidget() {
     setSelectedCity(city );
   }
   return (
-    <div className='ml-2 mt-2 flex justify-center items-start'>
-       <DropDownMenu onSelect={handleCitySelect}/>
+    <div className='mt-2 flex justify-center items-center flex-col w-full h-full'>
+       <CitySelector onSelect={handleCitySelect}/> 
        <WeatherCountry cities={[selectedCity]}/>
 
 
