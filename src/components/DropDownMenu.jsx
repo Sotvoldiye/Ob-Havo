@@ -19,7 +19,7 @@ export default function DropDownMenu({ onSelect, options = [] }) {
   return (
     <DropdownMenu>
     <DropdownMenuTrigger asChild>
-      <button className="border px-4 py-2 rounded max-w-[250px] w-full">
+      <button className="border px-4 py-2 rounded-sm">
         {selectedCity || "Shahar tanlang"}
       </button>
     </DropdownMenuTrigger>

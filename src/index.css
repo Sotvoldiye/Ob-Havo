@@ -14,6 +14,8 @@
 
 }
 
+
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -53,11 +55,22 @@
 }
 
 @layer base {
+  html, body, #root {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* ✅ bu muammoni to‘liq bartaraf etadi */
+  }
+
   * {
     @apply border-border outline-ring/50;
+    box-sizing: border-box; /* ✅ overflow muammolarini oldini olish uchun zarur */
   }
+
   body {
-    @apply h-full min-h-screen bg-background text-foreground;
+    @apply bg-background text-foreground;
   }
 }
-

@@ -1,26 +1,21 @@
 import React from "react";
 import DailyWeather from "./DailyWeather";
+import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
+import SVGGrafik from "./SVGGrafik";
 
 export default function WeekleyWeather({ city }) {
-  //  props dan kelgan malumotni saralab shu obj ga joylashtiriladi
   const daily = {};
-  // props dan kelayotgan malumotni saralab qayta nom berilyapti
-  city.forEach((day) => {
-    const days = day;
+  city?.forEach((day) => {
     const item = day.dt_txt.split(" ")[0];
-    if (!daily[item]) {
-      daily[item] = [];
-    }
-    daily[item].push(days);
+    if (!daily[item]) daily[item] = [];
+    daily[item].push(day);
   });
-  // daily ni ichidagi har bir obj dan weather degan qismi olinib yangi obj yaratilyapti
+
   const weeklyData = Object.entries(daily).map(([date, items]) => {
     const avgTemp =
       items.reduce((sum, item) => sum + item.main.temp, 0) / items.length;
-
-    const weather = items[0].weather[0]; // 1-chi entry dan olish
-
+    const weather = items[0].weather[0];
     const pops = items[0].pop;
     return {
       date,
@@ -31,54 +26,67 @@ export default function WeekleyWeather({ city }) {
     };
   });
 
-  const todayStr = new Date().toISOString().split("T")[0]; // "2025-06-06"
-  // 3. UI chiqish
+  const todayStr = new Date().toISOString().split("T")[0];
+
   return (
-    <div className="flex flex-col items-start w-full">
-    <Card className="w-full mt-2 bg-white dark:bg-[#2c2f33] text-[#212529] dark:text-[#f8f9fa] rounded-xl shadow">
-      <DailyWeather daily={daily} />
-  
-      {weeklyData.slice(0, 5).map((day) => {
-        const dateWeek = day.date;
-        const dateDay = new Date(dateWeek);
-        const dayName = dateDay.toLocaleDateString("en-US", {
-          weekday: "long",
-        });
-  
-        return (
-          <CardContent
-            key={day.date}
-            className="flex items-center justify-between gap-4 px-4 py-2 border-b dark:border-gray-700 last:border-none"
-          >
-            {/* Day Name */}
-            <h3 className="w-20 font-medium">
-              {day.date === todayStr ? "Today" : dayName}
-            </h3>
-  
-            {/* Icon and Pop % */}
-            <div className="flex flex-col items-center w-16">
-              <img
-                src={`https://openweathermap.org/img/wn/${day.icon}@2x.png`}
-                alt={day.description}
-                className="w-10 h-10"
-              />
-              {day.pops > 0 && (
-                <p className="text-xs text-blue-500">{Math.round(day.pops * 100)}%</p>
-              )}
-            </div>
-  
-            {/* Avg Temp */}
-            <p className="w-14 text-center">{day.avgTemp}°C</p>
-  
-            {/* Description */}
-            <p className="flex-1 text-sm italic text-gray-500 dark:text-gray-300">
-              {day.description}
-            </p>
-          </CardContent>
-        );
-      })}
-    </Card>
-  </div>
-  
+    <div className="flex flex-col items-center w-full max-w-5xl mx-auto px-2 sm:px-4">
+      <Card className="w-full flex flex-col justify-center items-center mt-2 sm:mt-4 bg-white dark:bg-[#2c2f33] text-[#212529] dark:text-[#f8f9fa] rounded-xl">
+        <div className="w-full px-2 sm:px-4 py-2 sm:py-3">
+          <DailyWeather daily={daily} />
+          <SVGGrafik grafik={daily} />
+        </div>
+
+        <AnimatePresence mode="popLayout">
+          {weeklyData.slice(0, 5).map((day) => {
+            const dateDay = new Date(day.date);
+            const dayName = dateDay.toLocaleDateString("en-US", {
+              weekday: "long",
+            });
+
+            return (
+              <motion.div
+                key={day.date}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="w-full"
+              >
+                <CardContent className="flex sm:flex-row items-center justify-between gap-2 sm:gap-4 px-2 sm:px-4 py-2 border-b dark:border-gray-700 last:border-none">
+                  {/* Day Name */}
+                  <h3 className="w-full sm:w-24 font-medium text-xs sm:text-sm text-center sm:text-left">
+                    {day.date === todayStr ? "Today" : dayName}
+                  </h3>
+
+                  {/* Icon and Pop % */}
+                  <div className="flex flex-col items-center w-full sm:w-16">
+                    <img
+                      src={`https://openweathermap.org/img/wn/${day.icon}@2x.png`}
+                      alt={day.description}
+                      className="w-8 h-8 sm:w-10 sm:h-10"
+                    />
+                    {day.pops > 0 && (
+                      <p className="text-[10px] sm:text-xs text-blue-500">
+                        {Math.round(day.pops * 100)}%
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Avg Temp */}
+                  <p className="w-full sm:w-14 text-center text-xs sm:text-sm">
+                    {day.avgTemp} K
+                  </p>
+
+                  {/* Description */}
+                  <p className="w-full sm:flex-1 text-xs sm:text-sm italic text-gray-500 dark:text-gray-300 text-center sm:text-left">
+                    {day.description}
+                  </p>
+                </CardContent>
+              </motion.div>
+            );
+          })}
+        </AnimatePresence>
+      </Card>
+    </div>
   );
 }
