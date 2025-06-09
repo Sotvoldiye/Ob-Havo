@@ -15,29 +15,6 @@ CSS / Tailwindcss
 
 fetch API (ma’lumot olish uchun)
 
-Loyihaning tuzilishi
-bash
-Копировать
-Редактировать
-src/
-├── main.jsx             # Ilovaning kirish nuqtasi
-├── index.css            # Global uslublar
-├── theme.css            # Yorug‘ / qorong‘i rejim uchun CSS
-├── pages/
-│   ├── WeatherWidget.jsx       # Asosiy widget, state va hooklar shu yerda
-│   ├── WeatherDisplay.jsx      # Ob-havo ma’lumotlarini ko‘rsatish uchun komponent
-│
-├── components/
-│   ├── ui/                    # shadcn framework elementlari
-│   ├── CitySelector.jsx       # Shahar qidirish va tanlash komponenti
-│   ├── DailyWeather.jsx       # Kunlik ob-havo ma’lumotlarini ko‘rsatish
-│   ├── DropdownMenu.jsx       # Dropdown menyu uchun komponent
-│   ├── SVGGrafik.jsx          # Shamol tezligi grafikasi
-│   └── WeekleyWeather.jsx     # Haftalik ob-havo ko‘rsatuvchi komponent
-│
-└── request/
-    ├── index.js              # API ga so‘rovlar yuborish va ma’lumot olish logikasi
-    └── fetchWeatherMock.js   # Mock ma’lumotlar (API chaqiruvlarni kamaytirish uchun)
 Loyihaning asosiy funksional imkoniyatlari
 Shahar tanlash — foydalanuvchi istalgan shaharning nomini qidirish va tanlash imkoniyati.
 
@@ -69,15 +46,9 @@ Loyihani klon qiling yoki yuklab oling.
 
 .env fayl yaratib unga quyidagicha API kalitini yozing:
 
-ini
-Копировать
-Редактировать
 REACT_APP_WEATHER_API_KEY=your_api_key_here
 Terminalda:
 
-bash
-Копировать
-Редактировать
 npm install
 npm start
 Brauzerda http://localhost:3000 manzilini oching.
