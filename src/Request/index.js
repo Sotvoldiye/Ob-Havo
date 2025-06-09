@@ -1,7 +1,7 @@
 import fetchWeatherMock from "./fetchWeatherMock";
 export const cities = ["London","New York", "Tokyo", "Sydney", "Cairo", ];
 
-const API_KEY = import.meta.env.VITE_BASE_URL;
+const API_KEY = '53157b6f30aa54d7005e13b012938bf4';
 
 let lastApiCallTime = 0; // so'nggi chaqiruv vaqti (timestamp, ms)
 
