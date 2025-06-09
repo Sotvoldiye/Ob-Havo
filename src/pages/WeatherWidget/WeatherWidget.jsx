@@ -7,6 +7,12 @@ import SVGGrafik from '../../components/SVGGrafik';
 export default function WeatherWidget() {
   const [selectedCity, setSelectedCity] = useState("London");
   const [darkMode, setDarkMode] = useState(false);
+  useEffect(() => {
+    const storedMode = localStorage.getItem('darkMode');
+    if (storedMode === 'true') {
+      setDarkMode(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (darkMode) {
@@ -14,8 +20,8 @@ export default function WeatherWidget() {
     } else {
       document.documentElement.classList.remove('dark');
     }
+    localStorage.setItem('darkMode', darkMode.toString());
   }, [darkMode]);
-
   const handleCitySelect = (city) => {
     setSelectedCity(city);
   };
