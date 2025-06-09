@@ -74,7 +74,7 @@ export default function WeekleyWeather({ city }) {
 
                   {/* Avg Temp */}
                   <p className="w-full sm:w-14 text-center text-xs sm:text-sm">
-                    {day.avgTemp} K
+                    {day.avgTemp} °C
                   </p>
 
                   {/* Description */}
