@@ -2,17 +2,16 @@ import React, { useEffect, useState } from "react";
 import { getCountryWeather } from "../../Request";
 import { toast } from "react-toastify";
 import WeekleyWeather from "../../components/WeekleyWeather";
-import { Card, CardAction } from "../../components/ui/card";
+import { Card, CardAction, CardContent } from "../../components/ui/card";
 import CitySelector from "../../components/CitySelector";
-import style from "./style.module.css";
+import style from './style.module.css'
 
 export default function WeatherCountry({ cities, handleCitySelect }) {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
-
+  console.log(data, "data");
   useEffect(() => {
     if (!cities || cities.length === 0) return;
-
     const fetchWeatherData = async () => {
       try {
         const results = await Promise.all(
@@ -27,50 +26,40 @@ export default function WeatherCountry({ cities, handleCitySelect }) {
 
     fetchWeatherData();
   }, [cities]);
-
   return (
-    <Card
-      className={`px-2 sm:px-4 py-3 sm:py-6 flex flex-col gap-4 border-none shadow-none ${style.bgImg}`}
-    >
+    <Card className={`px-1 sm:px-3 py-2 sm:py-4 justify-center items-center border-none shadow-none ${style.bgImg}`}>
       {data.map((cityData, id) => {
         const averageTemp =
           cityData.list.reduce((sum, item) => sum + item.main.temp, 0) /
           cityData.list.length;
 
         return (
-          <div key={id} className="flex justify-center">
-            <CardAction className="flex flex-col gap-3">
-              {/* Yuqori qism */}
-              <div className="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between gap-3">
-                {/* Shahar nomi va ma’lumotlar */}
-                <div className="flex flex-col items-center sm:flex-row sm:items-center gap-3">
-                  <div className="flex flex-col gap-1 text-center sm:text-left">
-                    <h2 className="text-base sm:text-lg md:text-xl font-semibold">
+          <div className="justify-center  items-center ">
+            <CardAction key={id} className="flex flex-col">
+              <div className="flex items-center justify-between">
+                <div className="flex">
+                  <div className="flex flex-col  sm:justify-between mb-2 gap-1 sm:gap-2">
+                    <h2 className="text-lg sm:text-xl font-semibold mb-1 text-center sm:text-left">
                       {cityData.city.name}
                     </h2>
-                    <p className="text-sm sm:text-base">
+                    <p className="text-sm sm:text-base text-center sm:text-left">
                       {cityData.list[0].main.temp.toFixed(0)}°C –{" "}
                       {cityData.list[0].weather[0].description}
                     </p>
-                    <div className="text-xs sm:text-sm">
-                      Bugun o‘rtacha: {averageTemp.toFixed(0)}°C
+                    <div className="text-xs sm:text-sm mb-1 sm:mb-2 text-center sm:text-left">
+                      Bugun o'rtacha: {averageTemp.toFixed(0)}°C
                     </div>
                   </div>
                   <img
-                    className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20"
-                    src={`https://openweathermap.org/img/wn/${cityData.list[0].weather[0].icon}@2x.png`}
+                    className="w-15 h-15 "
+                    src={`http://openweathermap.org/img/wn/${cityData.list[0].weather[0].icon}@2x.png`}
                     alt={cityData.list[0].weather[0].description}
                   />
                 </div>
-
-                {/* City Selector */}
-                  <CitySelector onSelect={handleCitySelect} />
+                <CitySelector onSelect={handleCitySelect} />
               </div>
 
-              {/* Haftalik ob-havo */}
-              <div className="w-full overflow-x-auto">
-                <WeekleyWeather city={cityData.list} />
-              </div>
+              <WeekleyWeather city={cityData.list} />
             </CardAction>
           </div>
         );

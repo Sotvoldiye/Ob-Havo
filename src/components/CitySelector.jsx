@@ -18,7 +18,7 @@ export default function CitySelector({ onSelect }) {
   };
 
   return (
-    <div className="flex w-100 justify-between gap-2">
+    <div className="flex  justify-between gap-2">
       <DropDownMenu options={filteredCities} onSelect={onSelect} />
       <div></div>
     </div>
