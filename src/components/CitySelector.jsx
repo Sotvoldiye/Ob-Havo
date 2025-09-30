@@ -19,13 +19,6 @@ export default function CitySelector({ onSelect }) {
 
   return (
     <div className="flex w-100 justify-between gap-2">
-      <input
-        type="text"
-        placeholder="Shahar nomini kiriting"
-        value={query}
-        onChange={handleSearch}
-        className="border px-3 py-2 rounded"
-      />
       <DropDownMenu options={filteredCities} onSelect={onSelect} />
       <div></div>
     </div>

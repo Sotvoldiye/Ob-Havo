@@ -1,0 +1,5 @@
+.bgImg{
+    background-image: url('/image/obhavo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}

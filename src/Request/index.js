@@ -1,4 +1,4 @@
-import fetchWeatherMock from "./fetchWeatherMock";
+// import fetchWeatherMock from "./fetchWeatherMock";
 export const cities = ["London","New York", "Tokyo", "Sydney", "Cairo", ];
 
 const API_KEY = '53157b6f30aa54d7005e13b012938bf4';
@@ -16,10 +16,10 @@ export async function getCountryWeather(city) {
 
   lastApiCallTime = now;
 
-  if (import.meta.env.MODE === "development") {
-    return fetchWeatherMock(city);
-  }
-  else{
+  // if (import.meta.env.MODE === "development") {
+  //   return fetchWeatherMock(city);
+  // }
+  if(import.meta.env.MODE === "development"){
     try {
       const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`);
       if (!res.ok) throw new Error("API error");
