@@ -1,3 +1,4 @@
+// SVGGrafik.jsx
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -16,38 +17,47 @@ export default function SVGGrafik({ grafik }) {
   const wind = [];
   const todayStr = new Date().toISOString().split("T")[0];
 
-  // Load today's data into days array
+  console.log("grafik:", grafik);
+  console.log("todayStr:", todayStr);
+
+  // Bugungi ma'lumotlarni days massiviga yuklash
   if (grafik && grafik[todayStr] && Array.isArray(grafik[todayStr])) {
     days.push(grafik[todayStr]);
   }
 
-  // Extract wind data
+  console.log("days:", days);
+
+  // Shamol ma'lumotlarini olish
   days.forEach((d) => {
     if (Array.isArray(d)) {
       d.forEach((p) => {
         if (p?.wind) {
-          wind.push(p.wind);
+          wind.push({ speed: p.wind.speed, time: p.time }); // Vaqtni ham saqlaymiz
         }
       });
     }
   });
 
-  // Extract wind speeds, filtering valid numbers
+  console.log("wind:", wind);
+
+  // Shamol tezligini olish va filtr qilish
   const windSpeeds = wind
     .map((item) => item.speed)
     .filter((speed) => typeof speed === "number" && !isNaN(speed));
 
-  // Return message if no data
+  console.log("windSpeeds:", windSpeeds);
+
+  // Ma'lumot yo‘q bo‘lsa xabar
   if (windSpeeds.length === 0) {
     return <div className="text-center text-gray-800 dark:text-gray-200">Bugungi ma'lumot yo‘q</div>;
   }
 
-  // Chart.js data configuration
+  // Chart.js ma'lumotlari
   const data = {
-    labels: windSpeeds.map((_, i) => `Point ${i + 1}`), // Replace with time labels if available
+    labels: wind.map((item) => item.time || `Nuqta ${wind.indexOf(item) + 1}`), // Vaqt yoki standart yorliq
     datasets: [
       {
-        label: "Wind Speed (m/s)",
+        label: "Shamol tezligi (m/s)",
         data: windSpeeds,
         borderColor: "#3b82f6",
         backgroundColor: "#ef4444",
@@ -59,7 +69,7 @@ export default function SVGGrafik({ grafik }) {
     ],
   };
 
-  // Chart.js options
+  // Chart.js sozlamalari
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -79,7 +89,7 @@ export default function SVGGrafik({ grafik }) {
       x: {
         title: {
           display: true,
-          text: "Time",
+          text: "Vaqt",
         },
       },
       y: {
@@ -87,7 +97,7 @@ export default function SVGGrafik({ grafik }) {
         suggestedMax: Math.max(...windSpeeds, 10),
         title: {
           display: true,
-          text: "Wind Speed (m/s)",
+          text: "Shamol tezligi (m/s)",
         },
       },
     },
