@@ -1,72 +1,101 @@
+import { Line } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  LineElement,
+  PointElement,
+  LinearScale,
+  CategoryScale,
+  Title,
+  Tooltip,
+} from "chart.js";
+
+ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Title, Tooltip);
+
 export default function SVGGrafik({ grafik }) {
   const days = [];
   const wind = [];
   const todayStr = new Date().toISOString().split("T")[0];
-  days.push(grafik[todayStr]);
 
+  // Load today's data into days array
+  if (grafik && grafik[todayStr] && Array.isArray(grafik[todayStr])) {
+    days.push(grafik[todayStr]);
+  }
+
+  // Extract wind data
   days.forEach((d) => {
-    d.forEach((p) => {
-      wind.push(p.wind);
-    });
+    if (Array.isArray(d)) {
+      d.forEach((p) => {
+        if (p?.wind) {
+          wind.push(p.wind);
+        }
+      });
+    }
   });
 
-  console.log(wind);
-  const windSpeeds = wind.map((item) => item.speed).filter(Boolean);
+  // Extract wind speeds, filtering valid numbers
+  const windSpeeds = wind
+    .map((item) => item.speed)
+    .filter((speed) => typeof speed === "number" && !isNaN(speed));
 
-  if (windSpeeds.length === 0) return <div>Bugungi ma'lumot yo‘q</div>;
+  // Return message if no data
+  if (windSpeeds.length === 0) {
+    return <div className="text-center text-gray-800 dark:text-gray-200">Bugungi ma'lumot yo‘q</div>;
+  }
 
-  const maxSpeed = Math.max(...windSpeeds, 10);
-  const marginLeft = 30;
-  const marginRight = 30;
-  const chartWidth = 500 - marginLeft - marginRight;
-  const svgWidth = chartWidth + marginLeft + marginRight;
-  const chartHeight = 200;
-  const stepX = chartWidth / (windSpeeds.length - 1 || 1);
+  // Chart.js data configuration
+  const data = {
+    labels: windSpeeds.map((_, i) => `Point ${i + 1}`), // Replace with time labels if available
+    datasets: [
+      {
+        label: "Wind Speed (m/s)",
+        data: windSpeeds,
+        borderColor: "#3b82f6",
+        backgroundColor: "#ef4444",
+        pointRadius: 4,
+        pointHoverRadius: 6,
+        fill: false,
+        tension: 0.4,
+      },
+    ],
+  };
 
-  const points = windSpeeds
-    .map((speed, i) => {
-      const x = marginLeft + i * stepX;
-      const y = chartHeight - (speed / maxSpeed) * chartHeight;
-      return `${x},${y}`;
-    })
-    .join(" ");
+  // Chart.js options
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      title: {
+        display: true,
+        text: "Bugungi prognoz shamol tezligi",
+        color: "#333",
+      },
+      tooltip: {
+        callbacks: {
+          label: (context) => `${context.parsed.y.toFixed(1)} m/s`,
+        },
+      },
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "Time",
+        },
+      },
+      y: {
+        beginAtZero: true,
+        suggestedMax: Math.max(...windSpeeds, 10),
+        title: {
+          display: true,
+          text: "Wind Speed (m/s)",
+        },
+      },
+    },
+  };
 
   return (
-    <div className="w-full overflow-x-auto py-2">
-      <p className="text-sm sm:text-base font-medium mb-2 text-gray-800 dark:text-gray-200 text-center sm:text-left">
-        Bugungi prognoz shamol tezligi
-      </p>
-      <svg
-        viewBox={`0 0 ${svgWidth} ${chartHeight}`}
-        preserveAspectRatio="xMidYMid meet"
-        className="w-full h-auto border border-gray-300 dark:border-gray-700 rounded-md"
-      >
-        <polyline
-          fill="none"
-          stroke="blue"
-          strokeWidth="2"
-          points={points}
-        />
-        {windSpeeds.map((speed, i) => {
-          const x = marginLeft + i * stepX;
-          const y = chartHeight - (speed / maxSpeed) * chartHeight;
-          return (
-            <g key={i}>
-              <circle cx={x} cy={y} r="4" fill="red" />
-              <text
-                x={x}
-                y={y - 10}
-                fontSize="10"
-                textAnchor="middle"
-                fill="#333"
-                style={{ userSelect: "none" }}
-              >
-                {`${speed.toFixed(1)} m/s`}
-              </text>
-            </g>
-          );
-        })}
-      </svg>
+    <div className="w-full h-[250px] py-2">
+      <Line data={data} options={options} />
     </div>
   );
 }
